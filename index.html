@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101a31">
+  <meta name="description" content="Encontre empresas próximas e organize leads locais para prospecção comercial.">
+  <title>Radar de Leads Locais</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="brand"><div class="logo">⌖</div><div><strong>Radar de Leads</strong><small>Inteligência comercial local</small></div></div>
+    <span class="pill">PWA</span>
+    <h1>Encontre empresas<br>perto de você.</h1>
+    <p>Busque negócios por CEP e organize contatos comerciais em uma lista exportável.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Configurar busca</h2>
+      <form id="searchForm">
+        <label for="cep">CEP da região</label>
+        <input id="cep" name="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="Ex.: 20000-000" required>
+        <label for="category">Tipo de empresa</label>
+        <select id="category">
+          <option value="all">Todas as categorias</option>
+          <option value="fitness">Academias</option>
+          <option value="restaurant">Restaurantes e cafés</option>
+          <option value="health">Clínicas e saúde</option>
+          <option value="shop">Lojas e comércio</option>
+          <option value="beauty">Salões de beleza</option>
+          <option value="realestate">Imobiliárias</option>
+          <option value="car">Oficinas e automotivo</option>
+          <option value="office">Escritórios e serviços profissionais</option>
+        </select>
+        <div class="range-heading"><label for="radius">Raio de busca</label><output id="radiusValue">5 km</output></div>
+        <input id="radius" type="range" min="1" max="50" value="5">
+        <div class="range-labels"><span>1 km</span><span>50 km</span></div>
+        <button class="primary" id="searchBtn" type="submit">⌕ &nbsp; Buscar empresas</button>
+        <p class="hint">A busca usa o CEP para obter uma localização aproximada e consulta dados públicos do OpenStreetMap. A cobertura e os contatos variam.</p>
+      </form>
+    </section>
+
+    <section class="results">
+      <div class="results-head">
+        <div><h2>Seus leads</h2><p id="summary">Nenhuma busca realizada ainda.</p></div>
+        <button id="installBtn" class="secondary hidden" type="button">Instalar app</button>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite">Informe um CEP e inicie uma busca.</div>
+      <div class="tools">
+        <input id="filterText" placeholder="Filtrar pelo nome..." aria-label="Filtrar pelo nome">
+        <select id="contactFilter" aria-label="Filtrar por contatos">
+          <option value="all">Todos os leads</option>
+          <option value="contact">Com algum contato</option>
+          <option value="email">Com e-mail</option>
+          <option value="phone">Com telefone</option>
+          <option value="website">Com site</option>
+        </select>
+      </div>
+      <div class="export-row">
+        <button id="csvBtn" class="secondary" type="button" disabled>⇩ Exportar CSV / Excel</button>
+        <button id="copyBtn" class="secondary" type="button" disabled>Copiar lista</button>
+      </div>
+      <div id="leadList" class="lead-list"></div>
+      <p class="disclaimer">Os dados vêm de mapas colaborativos e podem estar incompletos ou desatualizados. Confirme as informações antes de abordar qualquer empresa. O app não coleta contatos privados nem garante que todas as empresas da região estejam cadastradas.</p>
+    </section>
+  </main>
+  <footer>Radar de Leads Locais · Ferramenta de pesquisa comercial</footer>
+  <script src="app.js"></script>
+</body>
+</html>
