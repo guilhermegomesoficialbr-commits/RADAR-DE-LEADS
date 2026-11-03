@@ -1,2 +1,2 @@
 # RADAR-DE-LEADS
-Após que busca e localiza empresas próximas de você 
+App que busca e localiza empresas próximas de você 
